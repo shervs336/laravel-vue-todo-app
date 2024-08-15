@@ -2,7 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
+use App\Models\Todo;
+use App\Enums\ToDoStatus;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -15,9 +16,9 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        Todo::factory()->count(7)->create(['status' => ToDoStatus::PENDING]);
+        Todo::factory()->count(3)->create(['status' => ToDoStatus::PENDING, 'due_date_at' => now()]);
+        Todo::factory()->count(2)->create(['status' => ToDoStatus::IN_PROGRESS]);
+        Todo::factory()->count(3)->create(['status' => ToDoStatus::COMPLETED]);
     }
 }
