@@ -18,7 +18,6 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->enum('status', ToDoStatus::toArray())->default(ToDoStatus::PENDING);
             $table->dateTime('completed_at')->nullable();
-            $table->dateTime('due_date_at')->nullable();
             $table->timestamps();
         });
     }
