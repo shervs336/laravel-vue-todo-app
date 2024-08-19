@@ -6,6 +6,7 @@ export default {
     "./resources/**/*.blade.php",
     "./resources/**/*.js",
     "./resources/**/*.vue",
+    "./node_modules/vue3-tailwind-modal/**/*.js",
   ],
 
   theme: {

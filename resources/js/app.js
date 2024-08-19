@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import router from './routes.js';
 import App from '@/layouts/App.vue';
+import Notifications from 'notiwind';
 import '../css/app.css';
 import axios from 'axios';
 
@@ -16,4 +17,7 @@ const pinia = createPinia()
 const app = createApp(App).use(pinia)
 
 
-app.use(router).mount('#app');
+app.use(router);
+app.use(Notifications);
+
+app.mount('#app');
