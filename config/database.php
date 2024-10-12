@@ -170,4 +170,6 @@ return [
 
     ],
 
+    'default_string_length' => env('DB_STRING_LENGTH', 255),
+
 ];
