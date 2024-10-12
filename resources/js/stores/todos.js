@@ -37,6 +37,14 @@ export const useTodoStore = defineStore('todos', {
           throw error
         })
     },
+    async delete_todo(payload) {
+      return axios.delete('/api/todos/'+payload.id, payload)
+        .then((response) => {
+          return response
+        }).catch((error) => {
+          throw error
+        })
+    },
     set_selected_todo(todo) {
       this.selectedTodo = todo
     }

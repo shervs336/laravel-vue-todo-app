@@ -9,7 +9,7 @@
         
       </h3>
       <ul v-for="todo in todos">
-        <TodoItem :todo="todo" />
+        <TodoItem :todo="todo"/>
       </ul>
     </div>
 </template>

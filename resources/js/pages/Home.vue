@@ -31,7 +31,7 @@ import { Vue3TailwindModal } from "vue3-tailwind-modal";
 
 const showModalForm = ref(false);
 const store = useTodoStore()
-const { selectedTodo } = storeToRefs(store)
+const { selectedTodo, todos } = storeToRefs(store)
 
 onMounted(async () => {
   await store.fetch_todos();
@@ -77,5 +77,7 @@ watch(selectedTodo,(data) => {
     }
 })
 
-
+watch(todos, (data) => {
+    console.log(data)
+})
 </script>

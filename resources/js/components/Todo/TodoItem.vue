@@ -17,6 +17,7 @@
 <script setup>
     import { useTodoStore } from '@/stores/todos.js'
     import { TrashIcon, PencilSquareIcon } from '@heroicons/vue/24/solid';
+    import { notify } from "notiwind";
     const props = defineProps(['todo'])
     const store = useTodoStore()
 
@@ -37,7 +38,18 @@
         store.set_selected_todo(todo)
     }
     
-    function deleteTodo(todo) {
-        store.delete_todo(todo)
+    const deleteTodo = async function (todo) {
+        let response = await store.delete_todo(todo)
+        
+        if(response.data.success) {
+            notify({
+                group: "todo",
+                title: "Success",
+                text: "Todo removed successufully!"
+            }, 2000)
+
+            store.fetch_todos()
+        }        
+        
     }
 </script>
