@@ -1,7 +1,7 @@
 <template>
-    <main class="w-screen">
+    <main class="w-full">
       <navigation></navigation>
-      <div class="container mx-auto w-100">
+      <div class="container mx-auto w-full px-3">
         <router-view></router-view>
       </div>
     </main>
@@ -45,10 +45,10 @@
       </div>
     </NotificationGroup>
   </template>
-  
+
   <script>
   import Navigation from '@/components/Navigation.vue'
-  
+
   export default {
     components: {
       Navigation,

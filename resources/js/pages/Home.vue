@@ -6,9 +6,12 @@
         <div class="max-w-6xl mx-auto my-10">
             <button type="button" class="bg-blue-500 px-4 py-3 rounded text-white hover:bg-blue-600"  @click="showModalForm = true">Add To Do</button>
         </div>
-        <div v-for="(todos, group) in store.allTodos">
-            <TodoList :group="group" :todos="todos"/>
+        <div class="flex gap-4">
+            <div v-for="(todos, group) in store.allTodos">
+                <TodoList :group="group" :todos="todos"/>
+            </div>
         </div>
+
 
         <Vue3TailwindModal :showModal="showModalForm" @close="resetForm">
             <template #header>
@@ -39,10 +42,10 @@ onMounted(async () => {
 
 const submitTodo = async function(data) {
     const response = data?.id ? await store.update_todo(data) : await store.add_todo(data);
-    
+
     if(response.data?.success) {
         await store.fetch_todos()
-        
+
         if(data?.id) {
             store.set_selected_todo(null)
         }
@@ -71,7 +74,7 @@ const resetForm = function() {
     store.set_selected_todo(null)
 }
 
-watch(selectedTodo,(data) => { 
+watch(selectedTodo,(data) => {
     if(data?.id) {
         showModalForm.value = true
     }
